@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<title>
+    Camil PetRescue
+</title>
+
+<body>
+
+<h2> Autentifica-te  </h2>
+
+<input type="text" id="email" value="">
+<input type="text" id="password" value="">
+
+<button type="button" onclick="document.getElementById('demo').innerHTML = signUpFunction()">
+    Sign Up
+</button>
+
+<p id="demo"> </p>
+
+<script>
+function signUpFunction() {
+
+  var email = document.getElementById("email").value;
+  var password = document.getElementById("password").value;
+  var hiddenElement = document.createElement('a');
+
+    hiddenElement.href = 'data:attachment/text,' + encodeURI(textToSave);
+    hiddenElement.target = '_blank';
+    hiddenElement.download = 'text.txt';
+    hiddenElement.click();
+}
+</script>
+
+</body>
+
+</html>

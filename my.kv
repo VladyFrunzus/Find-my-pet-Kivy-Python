@@ -1,0 +1,256 @@
+#:import utils kivy.utils
+
+<CreateAccountWindow>:
+    name: "create"
+
+    namee: namee
+    email: email
+    password: passw
+    location: location
+    telephone: telephone
+
+    FloatLayout:
+        cols:1
+
+        FloatLayout:
+            size: root.width, root.height/2
+
+            canvas.before:
+                Color:
+                    rgb: utils.get_color_from_hex('#01804b')
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            Label:
+                text: "Create an Account"
+                size_hint: 0.8, 0.2
+                pos_hint: {"x":0.1, "top":1}
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+    #Name
+
+            Label:
+                size_hint: 0.5,0.09
+                pos_hint: {"x":0, "top":0.8}
+                text: "Name: "
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            TextInput:
+                pos_hint: {"x":0.5, "top":0.8}
+                size_hint: 0.4, 0.09
+                id: namee
+                multiline: False
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+    #Email
+
+            Label:
+                size_hint: 0.5,0.09
+                pos_hint: {"x":0, "top":0.8-0.10}
+                text: "Email: "
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            TextInput:
+                pos_hint: {"x":0.5, "top":0.8-0.10}
+                size_hint: 0.4, 0.09
+                id: email
+                multiline: False
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+   #Password
+
+            Label:
+                size_hint: 0.5,0.09
+                pos_hint: {"x":0, "top":0.8-0.10*2}
+                text: "Password: "
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            TextInput:
+                pos_hint: {"x":0.5, "top":0.8-0.10*2}
+                size_hint: 0.4, 0.09
+                id: passw
+                multiline: False
+                password: True
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+   #location
+
+            Label:
+                size_hint: 0.5,0.09
+                pos_hint: {"x":0, "top":0.8-0.10*3}
+                text: "City: "
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            TextInput:
+                pos_hint: {"x":0.5, "top":0.8-0.10*3}
+                size_hint: 0.4, 0.09
+                id: location
+                multiline: False
+                password: False
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+    #telephone
+
+            Label:
+                size_hint: 0.5,0.09
+                pos_hint: {"x":0, "top":0.8-0.10*4}
+                text: "Telephone: "
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            TextInput:
+                pos_hint: {"x":0.5, "top":0.8-0.10*4}
+                size_hint: 0.4, 0.09
+                id: telephone
+                multiline: False
+                password: False
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+        Button:
+            pos_hint:{"x":0.3,"y":0.07}
+            size_hint: 0.4, 0.1
+            font_size: (root.width**2 + root.height**2) / 15**4
+            text: "Already have an Account? Log In"
+            on_release:
+                root.manager.transition.direction = "left"
+                root.login()
+
+        Button:
+            pos_hint:{"x":0.3,"y":0.19}
+            size_hint: 0.4, 0.1
+            text: "Submit"
+            font_size: (root.width**2 + root.height**2) / 14**4
+            on_release:
+                root.manager.transition.direction = "left"
+                root.submit()
+
+
+<LoginWindow>:
+    name: "login"
+
+    email: email
+    password: password
+
+    FloatLayout:
+
+        canvas.before:
+            Color:
+                rgb: utils.get_color_from_hex('#01804b')
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Image:
+            source : "CPR_logo.png"
+            pos_hint: {"x":0.05,"y": 0.1}
+            size_hint: 0.45, 0.45
+
+        Label:
+            text:"Email: "
+            font_size: (root.width**2 + root.height**2) / 13**4
+            pos_hint: {"x":0.1, "top":0.9}
+            size_hint: 0.35, 0.15
+
+        TextInput:
+            id: email
+            font_size: (root.width**2 + root.height**2) / 13**4
+            multiline: False
+            pos_hint: {"x": 0.45 , "top":0.9}
+            size_hint: 0.4, 0.15
+
+        Label:
+            text:"Password: "
+            font_size: (root.width**2 + root.height**2) / 13**4
+            pos_hint: {"x":0.1, "top":0.75}
+            size_hint: 0.35, 0.15
+
+        TextInput:
+            id: password
+            font_size: (root.width**2 + root.height**2) / 13**4
+            multiline: False
+            password: True
+            pos_hint: {"x": 0.45, "top":0.75}
+            size_hint: 0.4, 0.15
+
+        Button:
+            pos_hint:{"x":0.55,"y":0.35}
+            size_hint: 0.3, 0.1
+            font_size: (root.width**2 + root.height**2) / 13**4
+            text: "Login"
+            on_release:
+                root.manager.transition.direction = "up"
+                root.loginBtn()
+
+        Button:
+            pos_hint:{"x":0.55,"y":0.15}
+            size_hint: 0.3, 0.1
+            font_size: (root.width**2 + root.height**2) / (14**4)
+            text: "Register for free"
+            on_release:
+                root.manager.transition.direction = "right"
+                root.createBtn()
+
+
+<MainWindow>:
+    n: n
+    email: email
+    created:created
+
+    FloatLayout:
+
+
+        canvas.before:
+            Color:
+                rgb: utils.get_color_from_hex('#01804b')
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            id: n
+            pos_hint:{"x": 0.1, "top":0.9}
+            size_hint:0.8, 0.2
+            text: "Account Name: "
+
+        Label:
+            id: email
+            pos_hint:{"x": 0.1, "top":0.7}
+            size_hint:0.8, 0.2
+            text: "Email: "
+
+        Label:
+            id: created
+            pos_hint:{"x": 0.1, "top":0.5}
+            size_hint:0.8, 0.2
+            text: "Created: "
+
+        Button:
+            pos_hint:{"x":0.35, "y": 0.2}
+            size_hint:0.3,0.1
+            text: "Log Out"
+            on_release:
+                app.root.current = "login"
+                root.manager.transition.direction = "down"
+
+        Button:
+            pos_hint: {"x":0.35, "y": 0.1}
+            size_hint: 0.3, 0.1
+            text: "Delete Account"
+            on_release:
+                root.remove()
+                app.root.current = "login"
+                root.manager.transition.direction = "down"
+
+        Button:
+            pos_hint: {"x": 0.35, "y": 0.5}
+            size_hint: 0.3, 0.1
+            text: "Make a post"
+            on_release:
+                app.root.current = "post"
+                root.manager.transition.direction = "up"
+
+
+<PostWindow>:
+    name: "post"
+    color:color
+
